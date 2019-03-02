@@ -1,8 +1,4 @@
 #!/bin/sh
-# todo : maybe add `cd $ROOT` at the begining of this script to secure cron tab execution
-# cron are run with pwd = /root or user ~
-# ROOT="/FULLPATH/OF/THIS/SCRIPT/DIRECTORY"
-# cd $ROOT
 
 # Import some vars from env
 source .env
@@ -17,6 +13,8 @@ LOG="${DIRLOG}/${TODAY}_log.log"
 
 echo "$(date +%F_%T) : == Starting $0 =="                 >> $LOG
 echo "My Process ID is `$$`"                              >> $LOG
+
+cd $DIR_SCRIPT
 
 if [ ! -d $DIRBCK ]; then
   echo "Establishment of the backup directory"            >> $LOG
@@ -40,3 +38,5 @@ echo "Remove local backup"                                >> $LOG
 rm $BCK
 
 echo "$(date +%F_%T) : == End =="                         >> $LOG
+
+cd -
