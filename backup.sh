@@ -4,23 +4,16 @@
 # ROOT="/FULLPATH/OF/THIS/SCRIPT/DIRECTORY"
 # cd $ROOT
 
+# Import some vars from env
+source .env
 # Date of the day
 TODAY=`date +%Y-%m-%d`
-# Folder to save (sites are here)
-# todo : maybe move to .env ?
-DIRTOBCK="/var/www/html/owncloud/DrWhat/files/Marvel"
-# backups destination folder
-DIRBCK="/var/archives"
-# logs folder
-DIRLOG="./log"
-# Nom du fichier de sauvegarde
+# Backup file name
 BCK_NAME="backup-$TODAY.tar.gz"
-# Chemin complet
+# Backup complet path
 BCK="${DIRBCK}/${BCK_NAME}"
 # Log file for current script
 LOG="${DIRLOG}/${TODAY}_log.log"
-# Sensitive vars : FTP_SERVER FTP_LOGIN and FTP_PASS
-source .env
 
 echo "$(date +%F_%T) : == Starting $0 =="                 >> $LOG
 echo "My Process ID is `$$`"                              >> $LOG
