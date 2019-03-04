@@ -45,6 +45,10 @@ func main() {
 		defer out.Close()
 
 		// write new image to file
-		jpeg.Encode(out, m, nil)
+		jpeg.Encode(out, m, &jpeg.Options{Quality: 60})
 	}
+}
+
+type Options struct {
+	Quality int
 }
