@@ -82,4 +82,3 @@ foreach my $directory (@dir_to_back)
 }
 
 $logger->info('== End ==');
-
