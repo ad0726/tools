@@ -48,11 +48,13 @@ foreach my $directory (@dir_to_back)
 {
     my ($name) = $directory =~ /.*\/([^\/]*)$/;
     $name =~ s/ //g;
+    $name =~ s/\(//g;
+    $name =~ s/\)//g;
     $name =~ s/é/e/g;
     $name =~ s/-/_/g;
     my $backup = $dir_back.'/backup-'.$date_now.'-'.$name.'.tar.gz';
     $logger->info('Establishment of the backup: ', $name);
-    `tar -cvzf ${backup} --absolute-names ${directory}` or $logger->error($!) and die($!);
+    `tar -cvzf ${backup} --absolute-names "${directory}"` or $logger->error($!) and die($!);
 
     $logger->info('Connect to FTP server and send: ', $name);
     my $ftp_host = $cfg->val('FTP', 'host');

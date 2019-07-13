@@ -1,4 +1,4 @@
-One shell tool to make a backup and uplaod that by ftp.
+One perl tool to make a backup and uplaod that by ftp.
 
 Licence: http://www.wtfpl.net/txt/copying/
 <a href="http://www.wtfpl.net/"><img
